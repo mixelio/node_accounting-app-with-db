@@ -1,12 +1,19 @@
 'use strict';
 
 const {
-  // User,
   getUsers,
   createUser,
   getUser,
   deleteUser,
   updateUser,
+} = require('./models/User.model');
+
+const {
+  getCategories,
+  createCategory,
+  getCategoryById,
+  deleteCategory,
+  updateCategory,
 } = require('./models/User.model');
 
 const {
@@ -100,6 +107,16 @@ const createServer = () => {
     const result = await updateUser(+id, req.body.name);
 
     res.status(200).json(result[1][0]);
+  });
+
+  app.get('/categories', express.json(), async (req, res) => {
+    try {
+      const categories = await getCategories();
+
+      res.status(200).send(categories);
+    } catch (e) {
+      res.status(404).send('Not Found');
+    }
   });
 
   app.get('/expenses', express.json(), async (req, res) => {
