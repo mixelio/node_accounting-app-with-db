@@ -10,10 +10,10 @@ const {
 
 const {
   getCategories,
-  createCategory,
-  getCategoryById,
-  deleteCategory,
-  updateCategory,
+  // createCategory,
+  // getCategoryById,
+  // deleteCategory,
+  // updateCategory,
 } = require('./models/User.model');
 
 const {
