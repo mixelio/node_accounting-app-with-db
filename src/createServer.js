@@ -97,9 +97,9 @@ const createServer = () => {
       return;
     }
 
-    const [_, [updatedUser]] = await updateUser(+id, req.body.name);
+    const result = await updateUser(+id, req.body.name);
 
-    res.status(200).json(updatedUser);
+    res.status(200).json(result[1][0]);
   });
 
   app.get('/expenses', express.json(), async (req, res) => {
@@ -176,9 +176,9 @@ const createServer = () => {
       return;
     }
 
-    const [_, [updatedExpense]] = await updateExpense(id, req.body);
+    const result = await updateExpense(id, req.body);
 
-    res.status(200).send(updatedExpense);
+    res.status(200).send(result[1][0]);
   });
 
   app.delete('/expenses/:id', express.json(), async (req, res) => {
